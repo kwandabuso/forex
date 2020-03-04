@@ -17,20 +17,13 @@ namespace forex.objects
             this.notes = notes;
         }
 
-
-
         public string makedecision
         {
-            //get{
-            //    return decision; } 
         set { decision = value; }
         }
         public string myNotes
         {
-            //get
-            //{
-            //    return notes;
-            //}
+            
             set { notes = value; }
         }
     }
