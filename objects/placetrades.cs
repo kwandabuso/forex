@@ -19,11 +19,18 @@ namespace forex.objects
 
         public string makedecision
         {
-        set { decision = value; }
+            get
+            {
+                return decision;
+            }
+            set { decision = value; }
         }
         public string myNotes
         {
-            
+            get
+            {
+                return notes;
+            }
             set { notes = value; }
         }
     }

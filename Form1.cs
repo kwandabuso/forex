@@ -19,9 +19,11 @@ namespace forex
             InitializeComponent();
         }
 
+        engine en = new engine();
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
+ 
             if (cmbDecision.SelectedIndex.Equals(-1))
             {
                 MessageBox.Show("please select a decision");
@@ -30,8 +32,6 @@ namespace forex
             {
                 MessageBox.Show("please enter notes for the trade");
             }
-            //var decision ;
-            //var notes = ;
 
 
             placetrades trades = new placetrades(cmbDecision.Text, txtNotes.Text);
