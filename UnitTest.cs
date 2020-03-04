@@ -17,7 +17,6 @@ namespace forex
             [TestMethod]
             public void runtests()
             {
-                //readFromFile read = new readFromFile();
                 var test = "wsx|edc|rfv|zxc|asd|qwe";
                 writeFile(test, test);
 
