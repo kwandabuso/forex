@@ -17,8 +17,7 @@ namespace forex
             [TestMethod]
             public void runtests()
             {
-                var test = "wsx|edc|rfv|zxc|asd|qwe";
-                writeFile(test, test);
+              
 
             }
         }
