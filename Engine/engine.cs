@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,26 @@ namespace forex.Engine
 
         }
 
+        public static SQLiteConnection CreateConnection()
+        {
+            var connectionString="";
+            SQLiteConnection sqlite_conn;
+
+            // Create a new database connection:
+            sqlite_conn = new SQLiteConnection(connectionString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString);
+           
+
+            // Open the connection:
+            try
+            {
+                sqlite_conn.Open();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return sqlite_conn;
+        }
 
         public List<String> ReadFile(string path, string status)
         {
@@ -44,7 +66,6 @@ namespace forex.Engine
                 throw;
             }
         }
-
 
         public void writeFile(string path, params string []items)
         {

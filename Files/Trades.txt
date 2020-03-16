@@ -3,4 +3,17 @@ Sell|sold because of a shooting star on my 30 min|OPEN
 Sell|selling because of a bearish engulfing pattern|OPEN
 Wait|we are waiting for this|OPEN
 Buy|we are buying this|OPEN
-||OPEN
+Sell|we are selling|OPEN
+Sell|ntest|OPEN
+Sell|test|OPEN
+Buy|testing|OPEN
+Wait|we are waiting for a chance to buy this|OPEN
+Sell|we are selling this one|OPEN
+Sell|we have an engulfin pattern on my rresistance|OPEN
+Sell|we have an engulfing on my line|OPEN
+Sell|this is a live test|OPEN
+Sell|there is an engulfing on my resistance, |OPEN
+Buy|this is a datetime test|OPEN
+Buy|this is a tes|OPEN
+Sell|there is a dot on my trend line, descending triagle in progress possibly the market will break the support|OPEN
+Buy|this is a test|OPEN

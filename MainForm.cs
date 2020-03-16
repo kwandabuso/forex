@@ -28,5 +28,11 @@ namespace forex
             DisplayTrades displayTrades = new DisplayTrades();
             displayTrades.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+          manageTrades   manage = new manageTrades();
+            manage.ShowDialog();
+        }
     }
 }
