@@ -1,4 +1,5 @@
-﻿using System;
+﻿using forex.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace forex
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //setALL variables
             Application.Run(new MainForm());
         }
     }

@@ -23,27 +23,41 @@ namespace forex
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
- 
-            if (cmbDecision.SelectedIndex.Equals(-1))
+
+            Boolean close = false;
+            if(cmbDecision.SelectedIndex.Equals(-1))
             {
                 MessageBox.Show("please select a decision");
+                
             }
             else if(txtNotes.Text.Equals(""))
             {
                 MessageBox.Show("please enter notes for the trade");
+               
             }
 
+            else
+            {
+                placetrades trades = new placetrades(cmbDecision.Text, txtNotes.Text);
 
-            placetrades trades = new placetrades(cmbDecision.Text, txtNotes.Text);
 
 
-            GlobalVariables.TradesPath = @"C:\kwanda\forex\Files\Trades.txt";
-            var textToWrite = trades.makedecision + "|" + trades.myNotes + "|"+"OPEN";
+                DAL.InsertData(trades.makedecision, trades.myNotes, "OPEN");
 
-            en.writeFile(GlobalVariables.TradesPath, textToWrite);
 
-            txtNotes.Text = "";
-            cmbDecision.Text = "";
+
+
+
+                GlobalVariables.TradesPath = @"C:\kwanda\forex\Files\Trades.txt";
+                var textToWrite = trades.makedecision + "|" + trades.myNotes + "|" + "OPEN";
+
+                en.writeFile(GlobalVariables.TradesPath, textToWrite);
+
+                txtNotes.Text = "";
+                cmbDecision.Text = "";
+            }
+            
+            
 
         }
 
