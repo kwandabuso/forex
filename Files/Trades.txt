@@ -17,3 +17,6 @@ Buy|this is a datetime test|OPEN
 Buy|this is a tes|OPEN
 Sell|there is a dot on my trend line, descending triagle in progress possibly the market will break the support|OPEN
 Buy|this is a test|OPEN
+Sell|test|OPEN
+Sell|we are testing a sell|OPEN
+Wait|we are waiting for a signal|OPEN

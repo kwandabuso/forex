@@ -31,6 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.rdoRunOnLive = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // button1
@@ -63,17 +64,32 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // rdoRunOnLive
+            // 
+            this.rdoRunOnLive.AutoSize = true;
+            this.rdoRunOnLive.Location = new System.Drawing.Point(536, 39);
+            this.rdoRunOnLive.Name = "rdoRunOnLive";
+            this.rdoRunOnLive.Size = new System.Drawing.Size(97, 17);
+            this.rdoRunOnLive.TabIndex = 3;
+            this.rdoRunOnLive.TabStop = true;
+            this.rdoRunOnLive.Text = "Run On LIVE!!!";
+            this.rdoRunOnLive.UseVisualStyleBackColor = true;
+            this.rdoRunOnLive.CheckedChanged += new System.EventHandler(this.rdoRunOnLive_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rdoRunOnLive);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,5 +98,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.RadioButton rdoRunOnLive;
     }
 }

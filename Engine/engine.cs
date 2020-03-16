@@ -23,7 +23,7 @@ namespace forex.Engine
             SQLiteConnection sqlite_conn;
 
             // Create a new database connection:
-            sqlite_conn = new SQLiteConnection(connectionString = ConfigurationManager.ConnectionStrings["myDB"].ConnectionString);
+            sqlite_conn = new SQLiteConnection("Data Source = "+GlobalVariables.DBPath+"; Version = 3; UseUTF16Encoding = True;");
            
 
             // Open the connection:
@@ -84,5 +84,6 @@ namespace forex.Engine
             //}
 
         }
+
     }
 }

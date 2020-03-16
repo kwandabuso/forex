@@ -12,6 +12,6 @@ namespace forex.Engine
         public static string TradesPath { get; set; }
         public static string TradesDecisions { get; set; }
         public static SQLiteConnection Conn { get; set; }
-
+        public static string DBPath { get; set; }
     }
 }

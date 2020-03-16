@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="Engine\engine.cs" />
     <Compile Include="Engine\GlobalVariables.cs" />
+    <Compile Include="Engine\setup.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
