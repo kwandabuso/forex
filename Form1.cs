@@ -30,6 +30,11 @@ namespace forex
                 MessageBox.Show("please select a decision");
                 
             }
+            else if (cmbIndecies.SelectedIndex.Equals(-1))
+            {
+                MessageBox.Show("please select an Indecie");
+
+            }
             else if(txtNotes.Text.Equals(""))
             {
                 MessageBox.Show("please enter notes for the trade");
@@ -38,11 +43,11 @@ namespace forex
 
             else
             {
-                placetrades trades = new placetrades(cmbDecision.Text, txtNotes.Text);
+                placetrades trades = new placetrades(cmbDecision.Text,cmbIndecies.Text, txtNotes.Text);
 
 
 
-                DAL.InsertData(trades.makedecision, trades.myNotes, "OPEN");
+                DAL.InsertData(trades.makedecision, trades.myNotes,trades.indecies, "OPEN");
 
 
 

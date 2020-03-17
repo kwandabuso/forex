@@ -29,10 +29,7 @@ namespace forex
 
 
 
-            for(int i =0; i<mYlst.Count; i++)
-            {
-               // cmbFilterByDecision.Items.Add(mYlst[i]);
-            }
+            
 
 
             read();

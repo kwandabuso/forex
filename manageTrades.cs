@@ -28,7 +28,7 @@ namespace forex
         private void manageTrades_Load(object sender, EventArgs e)
         {
             
-            DT = dAL.ReadData();
+            DT = dAL.CreateConn();
 
             dgvAllTrades.DataSource = DT;
         }
@@ -61,6 +61,13 @@ namespace forex
         {
 
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
     } 
     
 }

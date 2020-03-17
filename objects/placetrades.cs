@@ -10,10 +10,12 @@ namespace forex.objects
     {
         private string decision;
         private string notes;
+        private string place;
 
-        public placetrades(string decision, string notes)
+        public placetrades(string decision, string placetrades,string notes)
         {
             this.decision = decision;
+            place = placetrades;
             this.notes = notes;
         }
 
@@ -25,6 +27,16 @@ namespace forex.objects
             }
             set { decision = value; }
         }
+
+        public string indecies
+        {
+            get
+            {
+                return place;
+            }
+            set { place = value; }
+        }
+
         public string myNotes
         {
             get
