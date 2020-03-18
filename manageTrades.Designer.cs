@@ -46,7 +46,6 @@
             this.dgvAllTrades.Name = "dgvAllTrades";
             this.dgvAllTrades.Size = new System.Drawing.Size(744, 155);
             this.dgvAllTrades.TabIndex = 0;
-            this.dgvAllTrades.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAllTrades_CellContentClick);
             // 
             // button1
             // 
@@ -62,12 +61,14 @@
             // 
             this.cmbTrades.FormattingEnabled = true;
             this.cmbTrades.Items.AddRange(new object[] {
+            "All",
             "Open",
             "Closed",
             "Profit",
             "Loss",
             "Buy",
-            "Sell"});
+            "Sell",
+            "Wait"});
             this.cmbTrades.Location = new System.Drawing.Point(36, 29);
             this.cmbTrades.Name = "cmbTrades";
             this.cmbTrades.Size = new System.Drawing.Size(121, 21);
@@ -80,7 +81,6 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 3;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 

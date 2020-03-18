@@ -28,7 +28,7 @@ namespace forex
         private void manageTrades_Load(object sender, EventArgs e)
         {
             
-            DT = dAL.CreateConn();
+            DT = dAL.ReadAllData();
 
             dgvAllTrades.DataSource = DT;
         }
@@ -37,34 +37,31 @@ namespace forex
         {
             DT = new DataTable();
             DAL dAL = new DAL();
-            DT = dAL.ReadStatusData(cmbTrades.Text);
+
+            if(cmbTrades.Text.Equals("All"))
+            {
+                DT = dAL.ReadAllData();
+            }
+
+            DT = dAL.ReadDataOnSelectedText(cmbTrades.Text);
 
             dgvAllTrades.DataSource = DT;
         }
         private void update()
         {
             int row = dgvAllTrades.CurrentRow.Index;
-            string ID = dgvAllTrades.Rows[row].Cells[0].Value.ToString();
-            string Decision= dgvAllTrades.Rows[row].Cells[3].Value.ToString();
-            string profit = dgvAllTrades.Rows[row].Cells[4].Value.ToString();
+            string ID = dgvAllTrades.Rows[row].Cells[6].Value.ToString();
+            string Decision= dgvAllTrades.Rows[row].Cells[2].Value.ToString();
+            string ReasonClosed = dgvAllTrades.Rows[row].Cells[4].Value.ToString();
             string amount = dgvAllTrades.Rows[row].Cells[5].Value.ToString();
 
-            dAL.udpateRecords(ID, Decision, profit, amount);
+
+            dAL.UpdatePostgresData(ID, Decision, ReasonClosed, amount);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             update();
-        }
-
-        private void dgvAllTrades_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
 
        

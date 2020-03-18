@@ -43,13 +43,19 @@ namespace forex
 
             else
             {
+                string isOpen = "OPEN";
+                if(cmbDecision.Text.ToUpper().Equals("WAIT"))
+                {
+                    isOpen = "WAIT";
+                }
+             
                 placetrades trades = new placetrades(cmbDecision.Text,cmbIndecies.Text, txtNotes.Text);
 
 
 
-                DAL.InsertData(trades.makedecision, trades.myNotes,trades.indecies, "OPEN");
+                //DAL.InsertData(trades.makedecision, trades.myNotes,trades.indecies, "OPEN");
 
-
+                DAL.InsertPostgresData(trades.makedecision, trades.myNotes, trades.indecies, isOpen);
 
 
 

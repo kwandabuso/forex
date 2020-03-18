@@ -211,9 +211,10 @@ namespace forex.objects
             
         }
 
-        public DataTable CreateConn()
+
+        public DataTable ReadAllData()
         {
-            
+
             try
             {
                 var con = CreatePostgresConnection();
@@ -243,5 +244,84 @@ namespace forex.objects
             return dt;
         }
 
+        public DataTable ReadDataOnSelectedText(string selectedText)
+        {
+            var sql = "";
+
+
+            try
+            {
+                var con = CreatePostgresConnection();
+
+
+                if(selectedText.ToUpper().Equals("BUY")|| selectedText.ToUpper().Equals("SELL")|| selectedText.ToUpper().Equals("WAIT"))
+                {
+                    sql = "SELECT * FROM \"Forex_STG\".\"PlaceTrades\" where \"Decision\" = '" + selectedText.ToUpper() + "' ;";
+                }
+                else
+                    sql = "SELECT * FROM \"Forex_STG\".\"PlaceTrades\" where \"Status\" = '" + selectedText.ToUpper() + "' ;";
+
+                NpgsqlCommand MyCommand = con.CreateCommand();
+
+                MyCommand.CommandText = sql;
+
+                NpgsqlDataAdapter myDataAdapter = new NpgsqlDataAdapter();
+
+                myDataAdapter.SelectCommand = MyCommand;
+
+
+                DataSet myDataSet = new DataSet();
+                int recexist = myDataAdapter.Fill(myDataSet);
+
+                dt = myDataSet.Tables[0];
+                return dt;
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
+
+        public static void InsertPostgresData(string decision, string indices, string notes, string open)
+        {
+            try
+            {
+                var   con = CreatePostgresConnection();
+                
+                NpgsqlCommand sqlite_cmd;
+                sqlite_cmd = con.CreateCommand();
+                //
+                sqlite_cmd.CommandText = "INSERT INTO \"Forex_STG\".\"PlaceTrades\"( \"Decision\", \"Notes\", \"Indicies\", \"Status\")VALUES('" + decision.ToUpper() + "', '" + indices + "', '" + notes+ "','" + open.ToUpper()+"');";
+                sqlite_cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
+
+        }
+
+        public void UpdatePostgresData(string Id, string status, string prof, string amount) 
+        {
+            try
+            {
+                var con = CreatePostgresConnection();
+
+                NpgsqlCommand sqlite_cmd;
+                sqlite_cmd = con.CreateCommand();
+                //
+                sqlite_cmd.CommandText = "UPDATE \"Forex_STG\".\"PlaceTrades\" SET  \"Status\"='CLOSED',  \"reasonClosed\"='TP HIT', \"Amount\"='30' WHERE \"TradeId\"='"+Id+"';";
+                sqlite_cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+
+
+        }
     }
 }
