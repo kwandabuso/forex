@@ -17,3 +17,21 @@ Buy|this is a datetime test|OPEN
 Buy|this is a tes|OPEN
 Sell|there is a dot on my trend line, descending triagle in progress possibly the market will break the support|OPEN
 Buy|this is a test|OPEN
+Buy|buying test|OPEN
+Sell|testing on live|OPEN
+Sell|testing stg|OPEN
+Buy|testing live|OPEN
+Wait|waiting for a test|OPEN
+Buy|we have an engulfing on my support line|OPEN
+Buy|we have a bullish engulfing on my trendline, wait for the price to break previous candles resistance then we buy|OPEN
+Buy|we have a bullish engulfing on my line, wait for the price to break the the previous candle resistance|OPEN
+Buy|we have a hammer on my support, can wait for a confirmation but we are going in |OPEN
+Buy|we have an engulfing on my line|OPEN
+Sell|we have an engulfing on my line|OPEN
+Buy|we have an engulfing on my lines|OPEN
+Sell|we have an engulfing on my line|OPEN
+Buy|engulfing on my line|OPEN
+Buy|we have an engulfing on my line
+|OPEN
+Sell|we have an engulfing on my line, monitor it was a very large bearish candle|OPEN
+Buy|engulfing on my line|OPEN
