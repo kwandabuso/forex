@@ -35,3 +35,14 @@ Buy|we have an engulfing on my line
 |OPEN
 Sell|we have an engulfing on my line, monitor it was a very large bearish candle|OPEN
 Buy|engulfing on my line|OPEN
+Buy|we have an engulfing on the line 
+|OPEN
+Sell|we have an engulfing on my line|OPEN
+Sell|engulfing on my line|OPEN
+Buy|engulfing on my line|OPEN
+Buy|hammer on my line|OPEN
+Buy|we are buyin
+|OPEN
+Sell|we are selling|OPEN
+Sell|we are selling again|OPEN
+Buy|buying|OPEN

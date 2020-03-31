@@ -47,7 +47,7 @@ namespace forex
                 DT = dAL.ReadAllData();
             }
             else
-                DT = dAL.ReadDataOnSelectedText(cmbTrades.Text);
+                DT = dAL.ReadDataOnSelectedText(cmbTrades.Text.ToUpper());
 
 
 
@@ -55,20 +55,27 @@ namespace forex
             dgvAllTrades.DataSource = DT;
         }
 
-        private void update(string ID, string Decision, string ReasonClosed,string amount)
+        private void update(string ID, string Decision, string ReasonClosed,string amount, string Postmotem)
         {
+            try
+            {
+                dAL.UpdatePostgresData(ID, Decision, ReasonClosed, amount, Postmotem);
+            }
+            catch(Exception ex)
+            {
+
+            }
             
-            dAL.UpdatePostgresData(ID, Decision, ReasonClosed, amount);
             
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(txtStatus.Text.Equals(""))
+            if (cmbUpdateStatus.Text.Equals(""))
             {
                 MessageBox.Show("please enter status!!");
             }
-            else if (txtReason.Text.Equals(""))
+            else if (cmbProfitOrLoss.Text.Equals(""))
             {
                 MessageBox.Show("please enter reason!!");
             }
@@ -76,12 +83,19 @@ namespace forex
             {
                 MessageBox.Show("please enter Profit!!");
             }
+            else if(txtNotes.Text.Equals(""))
+            {
+                MessageBox.Show("please enter POST MOTEM notes!!");
+            }
             else
             {
-                update(ID, txtStatus.Text, txtReason.Text, txtProfit.Text);
-                txtStatus.Text = "";
-                txtReason.Text = "";
+                ManageTrades MT = new ManageTrades(cmbUpdateStatus.Text.ToUpper(), cmbProfitOrLoss.Text.ToUpper(), txtProfit.Text, txtNotes.Text);
+
+                update(ID, MT.Status, MT.ProfitLoss, MT.Amount, MT.PMotem);
+                cmbUpdateStatus.Text = "";
+                cmbProfitOrLoss.Text = "";
                 txtProfit.Text = "";
+                txtNotes.Text = "";
             }
 
 
@@ -89,6 +103,7 @@ namespace forex
 
             dgvAllTrades.DataSource = DT;
 
+            lblTotal.Text = "$" + dAL.ReadSumOfProfits();
         }
 
         private void dgvAllTrades_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -98,12 +113,15 @@ namespace forex
             string Decision = dgvAllTrades.Rows[row].Cells[2].Value.ToString();
             string ReasonClosed = dgvAllTrades.Rows[row].Cells[4].Value.ToString();
             string amount = dgvAllTrades.Rows[row].Cells[5].Value.ToString();
+            string post = dgvAllTrades.Rows[row].Cells[9].Value.ToString();
 
-
-            txtStatus.Text = Decision;
-            txtReason.Text = ReasonClosed;
+            cmbUpdateStatus.Text = Decision;
+            cmbProfitOrLoss.Text = ReasonClosed;
             txtProfit.Text = amount;
+            txtNotes.Text = post;
         }
+
+       
     } 
     
 }

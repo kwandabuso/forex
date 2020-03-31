@@ -38,7 +38,7 @@ namespace forex
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            GlobalVariables.DataBase = "live".ToUpper();
+            GlobalVariables.DataBase = "stg".ToUpper();
         }
     }
 }

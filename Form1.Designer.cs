@@ -43,6 +43,7 @@
             this.cmbDecision.Location = new System.Drawing.Point(206, 42);
             this.cmbDecision.Name = "cmbDecision";
             this.cmbDecision.Size = new System.Drawing.Size(121, 21);
+            this.cmbDecision.Sorted = true;
             this.cmbDecision.TabIndex = 0;
             // 
             // txtNotes
@@ -50,7 +51,7 @@
             this.txtNotes.Location = new System.Drawing.Point(166, 177);
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.Size = new System.Drawing.Size(467, 194);
-            this.txtNotes.TabIndex = 1;
+            this.txtNotes.TabIndex = 2;
             this.txtNotes.Text = "";
             // 
             // label1
@@ -76,7 +77,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(166, 400);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(486, 30);
-            this.btnSubmit.TabIndex = 4;
+            this.btnSubmit.TabIndex = 3;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -90,7 +91,7 @@
             this.cmbIndecies.Location = new System.Drawing.Point(206, 98);
             this.cmbIndecies.Name = "cmbIndecies";
             this.cmbIndecies.Size = new System.Drawing.Size(121, 21);
-            this.cmbIndecies.TabIndex = 5;
+            this.cmbIndecies.TabIndex = 1;
             // 
             // label3
             // 

@@ -23,72 +23,73 @@ namespace forex
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-            Boolean close = false;
-            if(cmbDecision.SelectedIndex.Equals(-1))
-            {
-                MessageBox.Show("please select a decision");
-                
-            }
-            else if (cmbIndecies.SelectedIndex.Equals(-1))
-            {
-                MessageBox.Show("please select an Indecie");
-
-            }
-            else if(txtNotes.Text.Equals(""))
-            {
-                MessageBox.Show("please enter notes for the trade");
-               
-            }
-
-            else
-            {
-                string isOpen = "OPEN";
-                if(cmbDecision.Text.ToUpper().Equals("WAIT"))
+                Boolean close = false;
+                if (cmbDecision.SelectedIndex.Equals(-1))
                 {
-                    isOpen = "WAIT";
+                    MessageBox.Show("please select a decision");
+
                 }
-             
-                placetrades trades = new placetrades(cmbDecision.Text,cmbIndecies.Text, txtNotes.Text);
+                else if (cmbIndecies.SelectedIndex.Equals(-1))
+                {
+                    MessageBox.Show("please select an Indecie");
 
+                }
+                else if (txtNotes.Text.Equals(""))
+                {
+                    MessageBox.Show("please enter notes for the trade");
 
+                }
 
-                //DAL.InsertData(trades.makedecision, trades.myNotes,trades.indecies, "OPEN");
+                else
+                {
+                    string isOpen = "OPEN";
 
-                DAL.InsertPostgresData(trades.makedecision, trades.myNotes, trades.indecies, isOpen);
+                    if (cmbDecision.Text.ToUpper().Equals("WAIT"))
+                    {
+                        isOpen = "WAIT";
+                    }
 
+                    placetrades trades = new placetrades(cmbDecision.Text, cmbIndecies.Text, txtNotes.Text);
 
+                    DAL.InsertPostgresData(trades.makedecision, trades.myNotes, trades.indecies, isOpen);
 
-                GlobalVariables.TradesPath = @"C:\kwanda\forex\Files\Trades.txt";
-                var textToWrite = trades.makedecision + "|" + trades.myNotes + "|" + "OPEN";
+                    txtNotes.Text = "";
+                    cmbDecision.Text = "";
+                    cmbIndecies.Text = "";
+                }
 
-                en.writeFile(GlobalVariables.TradesPath, textToWrite);
-
-                txtNotes.Text = "";
-                cmbDecision.Text = "";
             }
-            
+            catch (Exception ex)
+            {
+
+            }            
             
 
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var trades = new List<string>();
-            GlobalVariables.TradesDecisions= @"C:\kwanda\forex\Files\states.txt";
-            trades = en.ReadFile(GlobalVariables.TradesDecisions,"");
+            try {
+                var trades = new List<string>();
+                GlobalVariables.TradesDecisions = @"C:\kwanda\forex\Files\states.txt";
+                trades = en.ReadFile(GlobalVariables.TradesDecisions, "");
 
 
-            foreach(var trs in trades)
-            {
-                cmbDecision.Items.Add(trs);
+                foreach (var trs in trades)
+                {
+                    cmbDecision.Items.Add(trs);
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            DisplayTrades display = new DisplayTrades();
-            display.ShowDialog();
-        }
     }
 }

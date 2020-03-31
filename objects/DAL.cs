@@ -211,7 +211,6 @@ namespace forex.objects
 
         }
 
-
         public DataTable ReadAllData()
         {
 
@@ -219,7 +218,11 @@ namespace forex.objects
             {
                 var con = CreatePostgresConnection();
 
-                var sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" ORDER BY  \"dateTimeClosed\" desc;";
+
+                var sql = "SELECT \"TradeId\",\"Decision\", \"Notes\", \"Indicies\",  \"Status\",\"reasonClosed\", \"Amount\"," +
+                    " \"PostMotemNotes\", \"DateTimeAdded\", \"dateTimeClosed\" FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\";";
+
+                //var sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" ORDER BY  \"DateTimeAdded\" desc;";
 
                 NpgsqlCommand MyCommand = con.CreateCommand();
 
@@ -256,10 +259,35 @@ namespace forex.objects
 
                 if (selectedText.ToUpper().Equals("BUY") || selectedText.ToUpper().Equals("SELL") || selectedText.ToUpper().Equals("WAIT"))
                 {
-                    sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" where \"Decision\" = '" + selectedText.ToUpper() + "' ;";
+                    sql = "SELECT \"TradeId\",\"Decision\", \"Notes\", \"Indicies\",  \"Status\",\"reasonClosed\", \"Amount\"," +
+                    " \"PostMotemNotes\", \"DateTimeAdded\", \"dateTimeClosed\" FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\"" +
+                    "where \"Decision\" = '" + selectedText.ToUpper() + "' ;";
+
+
+                    //sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" where \"Decision\" = '" + selectedText.ToUpper() + "' ;";
+                }
+                else if(selectedText.ToUpper().Equals("OPEN") || selectedText.ToUpper().Equals("CLOSED"))
+                {
+                     sql = "SELECT \"TradeId\",\"Decision\", \"Notes\", \"Indicies\",  \"Status\",\"reasonClosed\", \"Amount\"," +
+                   " \"PostMotemNotes\", \"DateTimeAdded\", \"dateTimeClosed\" FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\"" +
+                   "where \"Status\" = '" + selectedText.ToUpper() + "' ;";
+
+                    //sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" where \"Status\" = '" + selectedText.ToUpper() + "' ;";
                 }
                 else
-                    sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" where \"Status\" = '" + selectedText.ToUpper() + "' ;";
+                    sql = "SELECT \"TradeId\",\"Decision\", \"Notes\", \"Indicies\",  \"Status\",\"reasonClosed\", \"Amount\"," +
+                   " \"PostMotemNotes\", \"DateTimeAdded\", \"dateTimeClosed\" FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\"" +
+                   "where \"reasonClosed\" = '" + selectedText.ToUpper() + "' ;";
+
+                // sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" where \"reasonClosed\" = '" + selectedText.ToUpper() + "' ;";
+
+
+
+
+
+
+
+
 
                 NpgsqlCommand MyCommand = con.CreateCommand();
 
@@ -304,7 +332,7 @@ namespace forex.objects
 
         }
 
-        public void UpdatePostgresData(string Id, string status, string prof, string amount)
+        public void UpdatePostgresData(string Id, string status, string prof, string amount, string PostmotemNotes)
         {
             try
             {
@@ -313,7 +341,9 @@ namespace forex.objects
                 NpgsqlCommand sqlite_cmd;
                 sqlite_cmd = con.CreateCommand();
                 //
-                sqlite_cmd.CommandText = "UPDATE \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" SET  \"Status\"='" + status + "',  \"reasonClosed\"='" + prof + "', \"Amount\"='" + amount + "', \"dateTimeClosed\"='" + DateTime.Now + "' WHERE \"TradeId\"='" + Id + "';";
+                sqlite_cmd.CommandText = "UPDATE \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" SET  \"Status\"='" + status + "'," +
+                    " \"reasonClosed\"='" + prof + "'," +" \"Amount\"='" + amount + "', \"dateTimeClosed\"='" + DateTime.Now + "', \"PostMotemNotes\"='" + PostmotemNotes + "'" +
+                    " WHERE \"TradeId\"='" + Id + "';";
                 sqlite_cmd.ExecuteNonQuery();
             }
             catch (Exception e)
