@@ -109,11 +109,11 @@ namespace forex
         private void dgvAllTrades_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int row = dgvAllTrades.CurrentRow.Index;
-            ID = dgvAllTrades.Rows[row].Cells[6].Value.ToString();
-            string Decision = dgvAllTrades.Rows[row].Cells[2].Value.ToString();
-            string ReasonClosed = dgvAllTrades.Rows[row].Cells[4].Value.ToString();
-            string amount = dgvAllTrades.Rows[row].Cells[5].Value.ToString();
-            string post = dgvAllTrades.Rows[row].Cells[9].Value.ToString();
+            ID = dgvAllTrades.Rows[row].Cells[0].Value.ToString();
+            string Decision = dgvAllTrades.Rows[row].Cells[4].Value.ToString();
+            string ReasonClosed = dgvAllTrades.Rows[row].Cells[5].Value.ToString();
+            string amount = dgvAllTrades.Rows[row].Cells[6].Value.ToString();
+            string post = dgvAllTrades.Rows[row].Cells[7].Value.ToString();
 
             cmbUpdateStatus.Text = Decision;
             cmbProfitOrLoss.Text = ReasonClosed;
