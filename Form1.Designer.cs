@@ -87,7 +87,8 @@
             this.cmbIndecies.FormattingEnabled = true;
             this.cmbIndecies.Items.AddRange(new object[] {
             "VIX 75",
-            "VIX 10"});
+            "HF Volitality 10 Index",
+            "Volitality 10 (1s) Index"});
             this.cmbIndecies.Location = new System.Drawing.Point(206, 98);
             this.cmbIndecies.Name = "cmbIndecies";
             this.cmbIndecies.Size = new System.Drawing.Size(121, 21);

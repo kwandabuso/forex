@@ -220,9 +220,9 @@ namespace forex.objects
 
 
                 var sql = "SELECT \"TradeId\",\"Decision\", \"Notes\", \"Indicies\",  \"Status\",\"reasonClosed\", \"Amount\"," +
-                    " \"PostMotemNotes\", \"DateTimeAdded\", \"dateTimeClosed\" FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\";";
+                    " \"PostMotemNotes\", \"DateTimeAdded\", \"dateTimeClosed\" FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\"ORDER BY  \"DateTimeAdded\" desc;";
 
-                //var sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" ORDER BY  \"DateTimeAdded\" desc;";
+                //var sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" c";
 
                 NpgsqlCommand MyCommand = con.CreateCommand();
 
@@ -232,6 +232,41 @@ namespace forex.objects
 
                 myDataAdapter.SelectCommand = MyCommand;
 
+
+                DataSet myDataSet = new DataSet();
+                int recexist = myDataAdapter.Fill(myDataSet);
+
+                dt = myDataSet.Tables[0];
+                return dt;
+            }
+
+            catch (Exception ex)
+            {
+
+            }
+            return dt;
+        }
+
+        public DataTable ReadAllDataOnSelectedDate()
+        {
+
+            try
+            {
+                var con = CreatePostgresConnection();
+
+
+                var sql = "SELECT \"TradeId\",\"Decision\", \"Notes\", \"Indicies\",  \"Status\",\"reasonClosed\", \"Amount\"," +
+                    " \"PostMotemNotes\", \"DateTimeAdded\", \"dateTimeClosed\" FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades where \"DateTimeAdded\" between '01/04/2020 10:09:33' and '03/04/2020 10:09:33' order by \"DateTimeAdded\" asc";
+
+                //var sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" c";
+
+                NpgsqlCommand MyCommand = con.CreateCommand();
+
+                MyCommand.CommandText = sql;
+
+                NpgsqlDataAdapter myDataAdapter = new NpgsqlDataAdapter();
+
+                myDataAdapter.SelectCommand = MyCommand;
 
                 DataSet myDataSet = new DataSet();
                 int recexist = myDataAdapter.Fill(myDataSet);

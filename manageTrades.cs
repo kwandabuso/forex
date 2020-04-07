@@ -121,7 +121,14 @@ namespace forex
             txtNotes.Text = post;
         }
 
-       
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            dAL = new DAL();
+            DT = new DataTable();
+
+            DT = dAL.ReadAllDataOnSelectedDate();
+            dgvAllTrades.DataSource = DT;
+        }
     } 
     
 }
