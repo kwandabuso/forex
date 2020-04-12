@@ -247,7 +247,7 @@ namespace forex.objects
             return dt;
         }
 
-        public DataTable ReadAllDataOnSelectedDate()
+        public DataTable ReadAllDataOnSelectedDate(string startDate, string endDate)
         {
 
             try
@@ -256,7 +256,7 @@ namespace forex.objects
 
 
                 var sql = "SELECT \"TradeId\",\"Decision\", \"Notes\", \"Indicies\",  \"Status\",\"reasonClosed\", \"Amount\"," +
-                    " \"PostMotemNotes\", \"DateTimeAdded\", \"dateTimeClosed\" FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades where \"DateTimeAdded\" between '01/04/2020 10:09:33' and '03/04/2020 10:09:33' order by \"DateTimeAdded\" asc";
+                    " \"PostMotemNotes\", \"DateTimeAdded\", \"dateTimeClosed\" FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" where \"DateTimeAdded\" between '"+ startDate + "' AND '"+endDate+"' order by \"DateTimeAdded\" asc";
 
                 //var sql = "SELECT * FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" c";
 
@@ -420,6 +420,48 @@ namespace forex.objects
             }
 
         }
+
+        public string countAllProfits(string profitLoss)
+        {
+            var sql = "";
+
+
+            try
+            {
+                var con = CreatePostgresConnection();
+                string myTexy = "";
+                if(profitLoss.ToUpper().Equals("PROFIT"))
+                {
+                    sql = "SELECT count(*) as profit FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" WHERE \"Amount\" > 0;";
+                }
+                else
+                {
+                    sql = "SELECT count(*) as profit FROM \"Forex_" + GlobalVariables.DataBase + "\".\"PlaceTrades\" WHERE \"Amount\" < 0;";
+                }
+
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, con);
+
+                NpgsqlDataReader reader = cmd.ExecuteReader();
+
+
+                while (reader.Read())
+                {
+                    myTexy = reader.GetValue(0).ToString();
+
+                }
+
+                return myTexy;
+
+            }
+
+            catch (Exception ex)
+            {
+                return "";
+            }
+
+        }
+
+
     }
 
 }

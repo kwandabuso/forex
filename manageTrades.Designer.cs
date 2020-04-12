@@ -31,8 +31,8 @@
             this.dgvAllTrades = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.cmbTrades = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnddate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,6 +44,11 @@
             this.txtProfit = new System.Windows.Forms.TextBox();
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.es = new System.Windows.Forms.Label();
+            this.lblLoss = new System.Windows.Forms.Label();
+            this.lblProfit = new System.Windows.Forms.Label();
+            this.lblProfits = new System.Windows.Forms.Label();
+            this.lblLosses = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllTrades)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,20 +92,20 @@
             this.cmbTrades.TabIndex = 0;
             this.cmbTrades.SelectedIndexChanged += new System.EventHandler(this.cmbTrades_SelectedIndexChanged);
             // 
-            // dateTimePicker1
+            // dtpStart
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(99, 64);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpStart.Location = new System.Drawing.Point(99, 64);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(200, 20);
+            this.dtpStart.TabIndex = 1;
             // 
-            // dateTimePicker2
+            // dtpEnddate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(439, 64);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 2;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.dtpEnddate.Location = new System.Drawing.Point(439, 64);
+            this.dtpEnddate.Name = "dtpEnddate";
+            this.dtpEnddate.Size = new System.Drawing.Size(200, 20);
+            this.dtpEnddate.TabIndex = 2;
+            this.dtpEnddate.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label1
             // 
@@ -141,7 +146,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(449, 289);
+            this.label2.Location = new System.Drawing.Point(637, 283);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 13;
@@ -150,7 +155,7 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(529, 289);
+            this.lblTotal.Location = new System.Drawing.Point(718, 286);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(0, 13);
             this.lblTotal.TabIndex = 14;
@@ -203,11 +208,60 @@
             this.es.TabIndex = 18;
             this.es.Text = "Post Motem";
             // 
+            // lblLoss
+            // 
+            this.lblLoss.AutoSize = true;
+            this.lblLoss.Location = new System.Drawing.Point(637, 313);
+            this.lblLoss.Name = "lblLoss";
+            this.lblLoss.Size = new System.Drawing.Size(35, 13);
+            this.lblLoss.TabIndex = 19;
+            this.lblLoss.Text = "LOSS";
+            // 
+            // lblProfit
+            // 
+            this.lblProfit.AutoSize = true;
+            this.lblProfit.Location = new System.Drawing.Point(637, 344);
+            this.lblProfit.Name = "lblProfit";
+            this.lblProfit.Size = new System.Drawing.Size(46, 13);
+            this.lblProfit.TabIndex = 20;
+            this.lblProfit.Text = "PROFIT";
+            // 
+            // lblProfits
+            // 
+            this.lblProfits.AutoSize = true;
+            this.lblProfits.Location = new System.Drawing.Point(718, 344);
+            this.lblProfits.Name = "lblProfits";
+            this.lblProfits.Size = new System.Drawing.Size(0, 13);
+            this.lblProfits.TabIndex = 21;
+            // 
+            // lblLosses
+            // 
+            this.lblLosses.AutoSize = true;
+            this.lblLosses.Location = new System.Drawing.Point(718, 313);
+            this.lblLosses.Name = "lblLosses";
+            this.lblLosses.Size = new System.Drawing.Size(0, 13);
+            this.lblLosses.TabIndex = 22;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(671, 56);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(119, 28);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Display";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // manageTrades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 552);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.lblLosses);
+            this.Controls.Add(this.lblProfits);
+            this.Controls.Add(this.lblProfit);
+            this.Controls.Add(this.lblLoss);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.es);
             this.Controls.Add(this.cmbProfitOrLoss);
@@ -219,8 +273,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpEnddate);
+            this.Controls.Add(this.dtpStart);
             this.Controls.Add(this.cmbTrades);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvAllTrades);
@@ -238,8 +292,8 @@
         private System.Windows.Forms.DataGridView dgvAllTrades;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cmbTrades;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.DateTimePicker dtpEnddate;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -251,5 +305,10 @@
         private System.Windows.Forms.TextBox txtProfit;
         private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Label es;
+        private System.Windows.Forms.Label lblLoss;
+        private System.Windows.Forms.Label lblProfit;
+        private System.Windows.Forms.Label lblProfits;
+        private System.Windows.Forms.Label lblLosses;
+        private System.Windows.Forms.Button button2;
     }
 }

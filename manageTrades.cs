@@ -29,11 +29,16 @@ namespace forex
         {
             
             DT = dAL.ReadAllData();
-
             dgvAllTrades.DataSource = DT;
 
-
             lblTotal.Text = "$"+dAL.ReadSumOfProfits();
+
+            DT = new DataTable();
+            lblProfits.Text = dAL.countAllProfits("profit");
+
+
+            DT = new DataTable();
+            lblLosses.Text = dAL.countAllProfits("loss");
 
         }
 
@@ -123,10 +128,15 @@ namespace forex
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
+           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
             dAL = new DAL();
             DT = new DataTable();
 
-            DT = dAL.ReadAllDataOnSelectedDate();
+            DT = dAL.ReadAllDataOnSelectedDate(dtpStart.Text, dtpEnddate.Text);
             dgvAllTrades.DataSource = DT;
         }
     } 
