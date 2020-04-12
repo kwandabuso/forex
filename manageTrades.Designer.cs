@@ -48,7 +48,6 @@
             this.lblProfit = new System.Windows.Forms.Label();
             this.lblProfits = new System.Windows.Forms.Label();
             this.lblLosses = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllTrades)).BeginInit();
             this.SuspendLayout();
             // 
@@ -242,22 +241,11 @@
             this.lblLosses.Size = new System.Drawing.Size(0, 13);
             this.lblLosses.TabIndex = 22;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(671, 56);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 28);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Display";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // manageTrades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 552);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.lblLosses);
             this.Controls.Add(this.lblProfits);
             this.Controls.Add(this.lblProfit);
@@ -309,6 +297,5 @@
         private System.Windows.Forms.Label lblProfit;
         private System.Windows.Forms.Label lblProfits;
         private System.Windows.Forms.Label lblLosses;
-        private System.Windows.Forms.Button button2;
     }
 }

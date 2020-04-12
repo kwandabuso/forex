@@ -128,16 +128,16 @@ namespace forex
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-           
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
             dAL = new DAL();
             DT = new DataTable();
 
             DT = dAL.ReadAllDataOnSelectedDate(dtpStart.Text, dtpEnddate.Text);
             dgvAllTrades.DataSource = DT;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
         }
     } 
     
